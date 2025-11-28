@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 
 function App() { 
-  const [message, setmessage] = useState('');
+  const apiUrl = import.meta.env.VITE_API_URL;
 
+  const [message, setmessage] = useState('');
   useEffect(() => {
-    fetch('/api/hello')
+    fetch(`${apiUrl}/api/health`)
       .then(response => response.json())
       .then(data => setmessage(data.message))
   }, []);
